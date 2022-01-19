@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31515.178
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Modelo", "Modelo\Modelo.csproj", "{9D278BC8-DD1C-40BB-9B91-6506DFF832DC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModeloDB", "ModeloDB\ModeloDB.csproj", "{0C4D682B-0CFE-4755-979E-30A08517AEBD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsolaApp", "ConsolaApp\ConsolaApp.csproj", "{A961B4B5-2E68-4BD1-8071-A5837F46D5B2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9D278BC8-DD1C-40BB-9B91-6506DFF832DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D278BC8-DD1C-40BB-9B91-6506DFF832DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D278BC8-DD1C-40BB-9B91-6506DFF832DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D278BC8-DD1C-40BB-9B91-6506DFF832DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C4D682B-0CFE-4755-979E-30A08517AEBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C4D682B-0CFE-4755-979E-30A08517AEBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C4D682B-0CFE-4755-979E-30A08517AEBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C4D682B-0CFE-4755-979E-30A08517AEBD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A961B4B5-2E68-4BD1-8071-A5837F46D5B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A961B4B5-2E68-4BD1-8071-A5837F46D5B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A961B4B5-2E68-4BD1-8071-A5837F46D5B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A961B4B5-2E68-4BD1-8071-A5837F46D5B2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D33F34EF-6412-4FCB-9286-A71043703E1D}
+	EndGlobalSection
+EndGlobal
