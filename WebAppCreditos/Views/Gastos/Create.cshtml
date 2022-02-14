@@ -1,0 +1,57 @@
+﻿@using Modelo.Entidades
+ 
+@model Gastos
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Creacion Gastos</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="">
+            <h3 class="text-center">Ingrese los Gastos</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="">
+            <form method="post" asp-action="Create">
+                <div class="form-group">
+                    <label class="control-label">Solicitante</label>
+                    <select class="form-control" asp-for="SolicitanteId" asp-items="@ViewBag.selectListSolicitantes">
+                        <option value="">--Selecciona un Solicitante--</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="arriendo">Ingresa cuanto pagas de arriendo (en caso de no arrendar deja en 0)</label>
+                    <input class="form-control" asp-for="Arriendo">
+                </div>
+                <div class="form-group">
+                    <label for="servbasicos">Ingresa cuanto pagas de servicios basicos al mes</label>
+                    <input class="form-control" asp-for="ServiciosBasicos">
+                </div>
+                <div class="form-group">
+                    <label for="comida">Ingresa cuanto pagas en comida</label>
+                    <input class="form-control" asp-for="Comida">
+                </div>
+                <div class="form-group">
+                    <label for="transporte">Ingresa cuanto gastas en Transporte</label>
+                    <input class="form-control" asp-for="Transporte">
+                </div>
+                <div class="form-group">
+                    <label for="educacion">Ingresa cuanto pagas en educacion</label>
+                    <input class="form-control" asp-for="Educacion">
+                </div>
+                <div class="form-group">
+                    <label for="gastosvarios">Ingresa tus gastos varios</label>
+                    <input class="form-control" asp-for="GastosVarios">
+                </div>
+                <div class="form-group">
+                    <input class="btn btn-success" type="submit" value="Crear Gastos" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

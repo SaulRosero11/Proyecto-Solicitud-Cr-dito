@@ -1,0 +1,73 @@
+﻿@using Modelo.Entidades
+
+@model BienAdquirir
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Borrar Bien</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="">
+            <h3 class="text-center">Confirmar el borrado de los datos del propietario: @Model.Propietario</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="">
+            <form method="post" asp-action="Delete">
+
+                <input type="hidden" asp-for="BienAdquirirId" />
+
+                <div class="form-group">
+                    <label for="Propietario">Propietario</label>
+                    <input type="text" class="form-control" asp-for="Propietario" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="PagoIMP">Tipo Bien</label>
+                    <select class="form-control" asp-for="TipoVivienda" disabled>
+                        <option>--SELECIONA UNA OPCION--</option>
+                        <option value="TERRENO"> TERRENO </option>
+                        <option value="VIVIENDA DE INTERÉS PÚBLICO"> VIVIENDA DE INTERÉS PÚBLICO</option>
+                        <option value="OTROS BIENES INMUEBLES"> OTROS BIENES INMUEBLES</option>
+                        <option value="VIVIENDA TERMINADA"> VIVIENDA TERMINADA</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="Avaluo">Avaluo</label>
+                    <input  class="form-control" asp-for="Avaluo" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="PagoIMP">Pago Impuestos</label>
+                    <select class="form-control"
+                            asp-for="PagoIMP" asp-items="Html.GetEnumSelectList<PagoImp>()" disabled>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="Hipoteca">Hipoteca</label>
+                    <select class="form-control"
+                            asp-for="Hipoteca" asp-items="Html.GetEnumSelectList<Hipoteca>()" disabled>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="Escritura">Escrituras</label>
+                    <select class="form-control"
+                            asp-for="Escrituras" asp-items="Html.GetEnumSelectList<Escrituras>()" disabled>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="Estado del Bien">Estado del Bien</label>
+                    <select class="form-control"
+                            asp-for="EstadoBien" asp-items="Html.GetEnumSelectList<EstadoBien>()" disabled>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input class="btn btn-danger" type="submit" value="Eliminar Bien" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

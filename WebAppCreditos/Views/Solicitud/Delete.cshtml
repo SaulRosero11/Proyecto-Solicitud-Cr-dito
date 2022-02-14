@@ -1,0 +1,98 @@
+﻿@using Modelo.Entidades
+
+@model Solicitud
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Borrar la Solicitud</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="">
+            <h3 class="text-center"> Eliminar la Solicitud del solicitante : @Model.Afiliado.Solicitante.Nombres @Model.Afiliado.Solicitante.Apellidos</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="">
+            <form method="post" asp-action="Delete">
+                <input type="hidden" asp-for="SolicitudId" />
+                <div class="form-group">
+                    <label class="control-label">Tipo de Crédito</label>
+                    <select class="form-control" asp-for="TipoCredito" disabled>
+                        <option value="">--Selecciona--</option>
+                        <option value="VIVIENDA DE INTERÉS PÚBLICO">VIVIENDA DE INTÉRES PÚBLICO</option>
+                        <option value="VIVIENDA TERMINADA">VIVIENDA TERMINADA</option>
+                        <option value="OTROS INMUEBLES">OTROS INMUEBLES</option>
+                        <option value="TERRENO">TERRENO</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Descuento Discapacidad</label>
+                    <select class="form-control" asp-for="DiscapacidadDesc" disabled>
+                        <option value="">--Selecciona--</option>
+                        <option value="true">Si</option>
+                        <option value="false">No</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Tasa Nominal Anual</label>
+                    <input class="form-group" asp-for="TNA" value="6,70" disabled />
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Total Crédito</label>
+                    <input class="form-group" asp-for="TotalCredito" disabled/>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Número de Pagos</label>
+                    <input class="form-group" asp-for="NumeroPagos" disabled/>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Cuota Desgravamen</label>
+                    <input class="form-group" asp-for="CuotaDesgrav" value="21,13" disabled />
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Cuota del Seguro</label>
+                    <input class="form-group" asp-for="CuatoSeguro" value="6,93" disabled />
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Cuota Mensual</label>
+                    <input class="form-group" asp-for="CuotaMensual" disabled/>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Bienes Solicitante</label>
+                    <select class="form-control" asp-for="BienAdquirirId" asp-items="@ViewBag.selectListBien" disabled>
+                        <option value="">--Selecciona--</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Bienes Solicitante</label>
+                    <select class="form-control" asp-for="AfiliadoId" asp-items="@ViewBag.selectListAfiliado" disabled>
+                        <option value="">--Selecciona--</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Bienes Solicitante</label>
+                    <select class="form-control" asp-for="HistorialCrediticioId" asp-items="@ViewBag.selectListHistorial" disabled>
+                        <option value="">--Selecciona--</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Bienes Solicitante</label>
+                    <select class="form-control" asp-for="CapacidadPagoId" asp-items="@ViewBag.selectListCap" disabled>
+                        <option value="">--Selecciona--</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Total Mensual a Pagar</label>
+                    <input class="form-group" asp-for="TotalCuota" disabled/>
+                </div>
+                <div class="form-group">
+                    <input class="btn btn-success" type="submit" value="Eliminar" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

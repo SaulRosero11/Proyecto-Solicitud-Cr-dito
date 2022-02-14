@@ -1,0 +1,73 @@
+﻿@using Modelo.Entidades
+
+@model IEnumerable<BienesSolicitante>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Lista Bienes Solicitante</h1>
+<p> A continución se presenta la lista de los Bienes Solicitante del Sistema de Aprovación de Créditos BIESS</p>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <h3>Bienes Solicitante</h3>
+        </div>
+        <div class="col-sm-6">
+            <a class="btn btn-success d-block" asp-controller="BienesSolicitante" asp-action="Create">
+                Nuevo Bienes Solicitante
+            </a>
+        </div>
+    </div>
+    @if (TempData["mensaje"] != null)
+    {
+        <div class="alert alert-warning alert-dismissible fade show " role="alert">
+            @TempData["mensaje"]
+            <button type="button" class="close" data-dismiss="alert" aria-label="close">
+                <span ariaaria-hidden="true">
+                    &times;
+                </span>
+            </button>
+        </div>
+    }
+    <div class="row">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Automovil</th>
+                    <th>Pago Automovil</th>
+                    <th>Casa</th>
+                    <th>Pago Casa</th>
+                    <th>Terreno</th>
+                    <th>Pago Terreno</th>
+                    <th>Total Pendiente</th>
+                    <th>Solicitante</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (BienesSolicitante bienesSol in Model)
+                {
+                    <tr>
+                        <td>@bienesSol.BienesSolicitanteId</td>
+                        <td>@bienesSol.Automovil</td>
+                        <td>@bienesSol.PagoPendienteAutomovil</td>
+                        <td>@bienesSol.Casa</td>
+                        <td>@bienesSol.PagoPendienteCasa</td>
+                        <td>@bienesSol.Terreno</td>
+                        <td>@bienesSol.PagoPendienteTerreno</td>
+                        <td>@bienesSol.TotalPendienteBienes</td>
+                        <td>@bienesSol.Solicitante.Nombres @bienesSol.Solicitante.Apellidos</td>
+                        <td>
+                            <a class="btn btn-warning" asp-controller="BienesSolicitante" asp-action="Edit" asp-route-id="@bienesSol.BienesSolicitanteId"> Editar </a>
+                            <a class="btn btn-danger" asp-controller="BienesSolicitante" asp-action="Delete" asp-route-id="@bienesSol.BienesSolicitanteId"> Eliminar </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

@@ -1,0 +1,62 @@
+﻿@using Modelo.Entidades
+
+@model Afiliado
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Borrar Afiliado</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="">
+            <h3 class="text-center">Confirmacion borrar afiliado : @Model.Solicitante.Nombres @Model.Solicitante.Apellidos</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="">
+            <form method="post" asp-action="Delete">
+                <input type="hidden" asp-for="AfiliadoId" />
+                <div class="form-group">
+                    <label class="control-label">Solicitante</label>
+                    <select class="form-control" asp-for="SolicitanteId" asp-items="@ViewBag.selectListSolicitantes" disabled>
+                        <option value="">--Selecciona un Solicitante--</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="TipoAfiliado">Tipo Afiliado</label>
+                    <select class="form-control" asp-for="TipoAfiliado" disabled>
+                        <option>--SLECCIONE UNA OPCION--</option>
+                        <option value="Patronato">Patronato</option>
+                        <option value="Voluntario">Voluntario</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="RucEmpresa">Ruc Empresa</label>
+                    <input class="form-control" asp-for="RucEmpresa"  disabled>
+                </div>
+                <div class="form-group">
+                    <label for="NombreEmpresa">Nombre Empresa</label>
+                    <input class="form-control" asp-for="NombreEmpresa" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="FechaInicio"> Desde que fecha</label>
+                    <input class="form-control" asp-for="PeriodoDesde" disabled/>
+                </div>
+                <div class="form-group">
+                    <label for="FechHasta"> Hasta que fecha</label>
+                    <input class="form-control" asp-for="PeriodoHasta" disabled/>
+                </div>
+                <div class="form-group">
+                    <label for="Aportaciones">Aportaciones</label>
+                    <input class="form-control" asp-for="TotalAportaciones" disabled>
+                </div>
+                <div class="form-group">
+                    <input class="btn btn-success" type="submit" value="Eliminar" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

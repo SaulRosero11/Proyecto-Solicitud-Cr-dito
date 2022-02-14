@@ -1,0 +1,79 @@
+﻿@using Modelo.Entidades
+
+@model IEnumerable<Solicitud>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Lista Solicitud</h1>
+<p> A continución se presenta la lista de las Solicitudes del Sistema de Aprovación de Créditos BIESS</p>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <h3>Solicitud</h3>
+        </div>
+        <div class="col-sm-6">
+            <a class="btn btn-success d-block" asp-controller="Solicitud" asp-action="Create">
+                Nueva Solicitud
+            </a>
+        </div>
+    </div>
+    @if (TempData["mensaje"] != null)
+    {
+        <div class="alert alert-warning alert-dismissible fade show " role="alert">
+            @TempData["mensaje"]
+            <button type="button" class="close" data-dismiss="alert" aria-label="close">
+                <span ariaaria-hidden="true">
+                    &times;
+                </span>
+            </button>
+        </div>
+    }
+    <div class="row">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Solicitante</th>
+                    <th>Tipo Credito</th>
+                    <th>Descuanto Discap</th>
+                    <th>TNA</th>
+                    <th>Tiempo Credito</th>
+                    <th>Numero Pagos</th>
+                    <th>Total Credito</th>
+                    <th>Cuota Desgravamen</th>
+                    <th>Cuota Seguro</th>
+                    <th>Cuota Mensual</th>
+                    <th>Total Cuota</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Solicitud solicitud in Model)
+                {
+                <tr>
+                    <td>@solicitud.SolicitudId</td>
+                    <td>@solicitud.Afiliado.Solicitante.Nombres @solicitud.Afiliado.Solicitante.Apellidos</td>
+                    <td>@solicitud.TipoCredito</td>
+                    <td>@solicitud.DiscapacidadDesc</td>
+                    <td>@solicitud.TNA</td>
+                    <td>@solicitud.TiempoCredito</td>
+                    <td>@solicitud.NumeroPagos</td>
+                    <td>@solicitud.TotalCredito</td>
+                    <td>@solicitud.CuotaDesgrav</td>
+                    <td>@solicitud.CuatoSeguro</td>
+                    <td>@solicitud.CuotaMensual</td>
+                    <td>@solicitud.TotalCuota</td>
+                    <td>
+                        <a class="btn btn-warning" asp-controller="Solicitud" asp-action="Edit" asp-route-id="@solicitud.SolicitudId"> Editar </a>
+                        <a class="btn btn-danger" asp-controller="Solicitud" asp-action="Delete" asp-route-id="@solicitud.SolicitudId"> Eliminar </a>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

@@ -1,0 +1,39 @@
+﻿@using Modelo.Entidades
+ 
+@model Solicitud_Det
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Creacion Detale Solicitud</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="">
+            <h3 class="text-center">Ingrese los datos del Detalle De la Solicitud</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="">
+            <form method="post" asp-action="Create">
+                <div class="form-group">
+                    <label class="control-label">Rol de Pagos</label>
+                    <select class="form-control" asp-for="solicitudId" asp-items="@ViewBag.selectListSolicitud">
+                        <option value="">--Selecciona--</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Declracion Impuestos</label>
+                    <select class="form-control" asp-for="amortizacionId" asp-items="@ViewBag.selectListAmortizacion">
+                        <option value="">--Selecciona--</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input class="btn btn-success" type="submit" value="Crear Bien" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,55 @@
+﻿@using Modelo.Entidades
+ 
+@model DetalleDeudas
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Creacion Detalle Deudas</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="">
+            <h3 class="text-center">Ingrese los datos detalle deudas</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="">
+            <form method="post" asp-action="Create">
+                <div class="form-group">
+                    <label class="control-label">Solicitante</label>
+                    <select class="form-control" asp-for="SolicitanteId" asp-items="@ViewBag.selectListSolicitantes">
+                        <option value="">--Selecciona un Solicitante--</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="tcredito">¿Cuenta con targetas de Crédito?</label>
+                    <select class="form-control"
+                            asp-for="TragetasCredito" asp-items="Html.GetEnumSelectList<Targetas>()">
+                        <option value="">--Selecciona un opcion--</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="pagoPnedienteTarg">¿Tiene pagos pendientes de targetas de credito?</label>
+                    <input class="form-control" asp-for="PagoPendienteTargetas">
+                </div>
+                <div class="form-group">
+                    <label for="linea">¿Tiene Créditos de línea blanca?</label>
+                    <select class="form-control"
+                            asp-for="CreditosLineaBlanca" asp-items="Html.GetEnumSelectList<CreditosLineaBlanca>()">
+                        <option value="">--Selecciona un opcion--</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="lineablanca">¿Tiene pagos pendientes de Créditos de línea blanca?</label>
+                    <input class="form-control" asp-for="PagoPendienteCreditos">
+                </div>
+                <div class="form-group">
+                    <input class="btn btn-success" type="submit" value="Crear Detalle Deuda" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

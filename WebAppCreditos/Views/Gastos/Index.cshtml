@@ -1,0 +1,73 @@
+﻿@using Modelo.Entidades
+
+@model IEnumerable<Gastos>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Lista Gastos</h1>
+<p> A continución se presenta la lista de los Gastos del Solicitante del Sistema de Aprovación de Créditos BIESS</p>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <h3>Gastos</h3>
+        </div>
+        <div class="col-sm-6">
+            <a class="btn btn-success d-block" asp-controller="Gastos" asp-action="Create">
+                Nuevo Gastos
+            </a>
+        </div>
+    </div>
+    @if (TempData["mensaje"] != null)
+    {
+        <div class="alert alert-warning alert-dismissible fade show " role="alert">
+            @TempData["mensaje"]
+            <button type="button" class="close" data-dismiss="alert" aria-label="close">
+                <span ariaaria-hidden="true">
+                    &times;
+                </span>
+            </button>
+        </div>
+    }
+    <div class="row">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Arriendo</th>
+                    <th>Servicios Basicos</th>
+                    <th>Comida</th>
+                    <th>Transporte</th>
+                    <th>Educacion</th>
+                    <th>Gastos Varios</th>
+                    <th>Total Gastos</th>
+                    <th>Solicitante</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Gastos gastos in Model)
+                {
+                    <tr>
+                        <td>@gastos.GastosId</td>
+                        <td>@gastos.Arriendo</td>
+                        <td>@gastos.ServiciosBasicos</td>
+                        <td>@gastos.Comida</td>
+                        <td>@gastos.Transporte</td>
+                        <td>@gastos.Educacion</td>
+                        <td>@gastos.GastosVarios</td>
+                        <td>@gastos.TotalGastos</td>
+                        <td>@gastos.Solicitante.Nombres @gastos.Solicitante.Apellidos</td>
+                        <td>
+                        <a class="btn btn-warning" asp-controller="Gastos" asp-action="Edit" asp-route-id="@gastos.GastosId"> Editar </a>
+                        <a class="btn btn-danger" asp-controller="Gastos" asp-action="Delete" asp-route-id="@gastos.GastosId"> Eliminar </a>
+                    </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

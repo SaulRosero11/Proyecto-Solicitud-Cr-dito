@@ -1,0 +1,43 @@
+﻿@using Modelo.Entidades
+
+@model Amortizacion
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Creacion Amortizacion</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="">
+            <h3 class="text-center">Ingrese los datos de Amortizacion</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="">
+            <form method="post" asp-action="Create">
+                <div class="form-group">
+                    <label for="Avaluo">Valor Crédito</label>
+                    <input step="0.00" min="0" class="form-control" asp-for="ValorCredito" placeholder="0.00">
+                </div>
+                <div class="form-group">
+                    <label for="Avaluo">Pago Mensual</label>
+                    <input step="0.00" min="0" class="form-control" asp-for="PagoMensual" placeholder="0.00"> 
+                </div>
+                <div class="form-group">
+                    <label for="PagoIMP">Pago Impuestos</label>
+                    <select class="form-control"
+                            asp-for="Estado" asp-items="Html.GetEnumSelectList<Estado>()">
+                        <option value="">--Selecciona un opcion--</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input class="btn btn-success" type="submit" value="Crear Bien" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

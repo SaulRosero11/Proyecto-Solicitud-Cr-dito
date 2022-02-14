@@ -1,0 +1,74 @@
+﻿@using Modelo.Entidades;
+
+@model IEnumerable<Afiliado>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Lista Afiliados</h1>
+<p> A continución se presenta la lista de los Afilliados del Sistema de Aprovación de Créditos BIESS</p>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <h3>Afiliados</h3>
+        </div>
+        <div class="col-sm-6">
+            <a class="btn btn-success d-block" asp-controller="Afiliados" asp-action="Create">
+                Nuevo Afiliado
+            </a>
+        </div>
+    </div>
+    @if (TempData["mensaje"] != null)
+    {
+        <div class="alert alert-warning alert-dismissible fade show " role="alert">
+            @TempData["mensaje"]
+            <button type="button" class="close" data-dismiss="alert" aria-label="close">
+                <span ariaaria-hidden="true">
+                    &times;
+                </span>
+            </button>
+        </div>
+    }
+    <div class="row">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Tipo Afiliacion</th>
+                    <th>Ruc Empresa</th>
+                    <th>Nombre Empresa</th>
+                    <th>Periodo Desde</th>
+                    <th>Periodo Hasta</th>
+                    <th>Total Aportaciones</th>
+                    <th>Solicitante Id</th>
+                    <th>Nombre</th>
+                    <th>Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Afiliado afiliado in Model)
+                {
+                    <tr>
+                        <td>@afiliado.AfiliadoId</td>
+                        <td>@afiliado.TipoAfiliado</td>
+                        <td>@afiliado.RucEmpresa</td>
+                        <td>@afiliado.NombreEmpresa</td>
+                        <td>@afiliado.PeriodoDesde.ToShortDateString()</td>
+                        <td>@afiliado.PeriodoHasta.ToShortDateString()</td>
+                        <td>@afiliado.TotalAportaciones</td>
+                        <td>@afiliado.Solicitante.SolicitanteId</td>
+                        <td>@afiliado.Solicitante.Nombres  @afiliado.Solicitante.Apellidos</td>
+                        <td>
+                            <a class="btn btn-warning" asp-controller="Afiliados" asp-action="Edit" asp-route-id="@afiliado.AfiliadoId"> Editar </a>
+                            <a class="btn btn-danger" asp-controller="Afiliados" asp-action="Delete" asp-route-id="@afiliado.AfiliadoId"> Eliminar </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

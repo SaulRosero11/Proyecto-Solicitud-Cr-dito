@@ -1,0 +1,69 @@
+﻿@using Modelo.Entidades
+
+@model IEnumerable<DeclaracionImp>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Lista Declaracion Impuestos</h1>
+<p> A continución se presenta la lista de las Declaraciones de Impuestos del Sistema de Aprovación de Créditos BIESS</p>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <h3>Declaracion</h3>
+        </div>
+        <div class="col-sm-6">
+            <a class="btn btn-success d-block" asp-controller="DeclaracionImp" asp-action="Create">
+                Nuevo Declaracion
+            </a>
+        </div>
+    </div>
+    @if (TempData["mensaje"] != null)
+    {
+        <div class="alert alert-warning alert-dismissible fade show " role="alert">
+            @TempData["mensaje"]
+            <button type="button" class="close" data-dismiss="alert" aria-label="close">
+                <span ariaaria-hidden="true">
+                    &times;
+                </span>
+            </button>
+        </div>
+    }
+    <div class="row">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Ventas Anuales</th>
+                    <th>Aporte IESS</th>
+                    <th>Prestamos IESS</th>
+                    <th>Gastos Varios</th>
+                    <th>Total Ingresos</th>
+                    <th>Solicitante</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (DeclaracionImp declaracion in Model)
+                {
+                <tr>
+                    <td>@declaracion.DeclaracionImpId</td>
+                    <td>@declaracion.VentasAnuales</td>
+                    <td>@declaracion.AporteIESS</td>
+                    <td>@declaracion.PrestamosIESS</td>
+                    <td>@declaracion.GastosVarios</td>
+                    <td>@declaracion.TotalIngresos</td>
+                    <td>@declaracion.Solicitante.Nombres @declaracion.Solicitante.Apellidos</td>
+                    <td>
+                        <a class="btn btn-warning" asp-controller="DeclaracionImp" asp-action="Edit" asp-route-id="@declaracion.DeclaracionImpId"> Editar </a>
+                        <a class="btn btn-danger" asp-controller="DeclaracionImp" asp-action="Delete" asp-route-id="@declaracion.DeclaracionImpId"> Eliminar </a>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

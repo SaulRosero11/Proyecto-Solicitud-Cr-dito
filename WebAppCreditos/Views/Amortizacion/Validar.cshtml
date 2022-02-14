@@ -1,0 +1,114 @@
+﻿@using Modelo.Entidades
+
+@model Amortizacion
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Amortizacion</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+            <form method="post" asp-action="Validar">
+                 <input type="hidden" asp-for="AmortizacionId" />
+                <div class="form-group">
+                    <label class="control-label">Valor del Credito</label>
+                    <input class="form-control" asp-for="ValorCredito" />
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Pago Mensual</label>
+                    <input class="form-control" asp-for="PagoMensual" />
+                </div>
+                <div class="form-group">
+                    <label for="Estado">Estado</label>
+                    <select class="form-control"
+                            asp-for="Estado" asp-items="Html.GetEnumSelectList<Estado>()">
+                        <option value="">--Selecciona un Estado Civil--</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Validar" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+
+        <div class="col-sm-8">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <td>Nombre</td>
+                            <td>Total Credito</td>
+                            <td>Ingresos Netos</td>
+                            <td>Calculado el 35%</td>
+                            <td>Cuota Mensual</td>
+                            <td>Aprobado</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Solicitud_Dets)
+                         {
+                            <tr>
+                                <td>@item.Solicitud.Afiliado.Solicitante.Nombres @item.Solicitud.Afiliado.Solicitante.Apellidos</td>
+                                <td>@item.Solicitud.TotalCredito </td>
+                                <td>@item.Solicitud.CapacidadPago.CapcidadPago</td>
+                                @if(item.Solicitud != null) { 
+
+                                <td>@ViewBag.Calculo.CapacidadPago(item.Solicitud)</td>
+                                <td>@item.Solicitud.TotalCuota</td>
+                                <td>@ViewBag.Calculo.Aprobado(item.Solicitud)</td>
+                            }
+                            else
+                            {
+                                <td>--</td>
+                                <td>--</td>
+                            }
+                            </tr>
+                         }
+                    </tbody>
+                </table>
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <td>Nombre</td>
+                            <td>Aportaciones al IESS</td>
+                            <td>Mas de 12 Aportaciones</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Solicitud_Dets)
+                        {
+                            <tr>
+                                <td>@item.Solicitud.Afiliado.Solicitante.Nombres @item.Solicitud.Afiliado.Solicitante.Apellidos</td>
+                                <td>@item.Solicitud.Afiliado.TotalAportaciones </td>
+                                @if (item.Solicitud != null)
+                                {
+                                    <td>Verdadero</td>
+                                }else
+                                {
+                                    <td>Falso</td>
+                                }
+                            </tr>}
+                    </tbody>
+                </table>
+            <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <td>Nombre</td>
+                            <td>Estado Historial Crediticio</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Solicitud_Dets)
+                        {
+                            <tr>
+                                <td>@item.Solicitud.Afiliado.Solicitante.Nombres @item.Solicitud.Afiliado.Solicitante.Apellidos</td>
+                                <td>@item.Solicitud.HistorialCrediticio.EstadoHistorial</td>
+                            </tr>}
+                    </tbody>
+                </table>
+         </div>
+    </div>
+</div>
+

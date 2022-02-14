@@ -1,0 +1,62 @@
+﻿@using Modelo.Entidades
+
+@model Gastos
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Borrar Gastos</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="">
+            <h3 class="text-center">Confirmacion borrar gastos del solicitante : @Model.Solicitante.Nombres @Model.Solicitante.Apellidos</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="">
+            <form method="post" asp-action="Delete">
+                <input type="hidden" asp-for="GastosId" />
+                <div class="form-group">
+                    <label class="control-label">Solicitante</label>
+                    <select class="form-control" asp-for="SolicitanteId" asp-items="@ViewBag.selectListSolicitantes" disabled>
+                        <option value="">--Selecciona un Solicitante--</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="arriendo">Ingresa cuanto pagas de arriendo (en caso de no arrendar deja en 0)</label>
+                    <input class="form-control" asp-for="Arriendo" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="servbasicos">Ingresa cuanto pagas de servicios basicos al mes</label>
+                    <input class="form-control" asp-for="ServiciosBasicos" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="comida">Ingresa cuanto pagas en comida</label>
+                    <input class="form-control" asp-for="Comida" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="transporte">Ingresa cuanto gastas en Transporte</label>
+                    <input class="form-control" asp-for="Transporte" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="educacion">Ingresa cuanto pagas en educacion</label>
+                    <input class="form-control" asp-for="Educacion" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="gastosvarios">Ingresa tus gastos varios</label>
+                    <input class="form-control" asp-for="GastosVarios" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="total">Total Gastos</label>
+                    <input class="form-control" asp-for="TotalGastos" disabled>
+                </div>
+                <div class="form-group">
+                    <input class="btn btn-success" type="submit" value="Eliminar" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

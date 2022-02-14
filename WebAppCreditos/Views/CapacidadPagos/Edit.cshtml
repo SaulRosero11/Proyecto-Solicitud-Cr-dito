@@ -1,0 +1,46 @@
+﻿@using Modelo.Entidades
+
+@model CapacidadPago
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Actualizar Capacidad de Pago</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="">
+            <h3 class="text-center">Editar la Capacidad de Pago del solicitante : @Model.RolPagos.Solicitante.Nombres @Model.RolPagos.Solicitante.Apellidos</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="">
+            <form method="post" asp-action="Edit">
+                <input type="hidden" asp-for="CapacidadPagoId" />
+                <div class="form-group">
+                    <label class="control-label">Rol de Pagos</label>
+                    <select class="form-control" asp-for="RolPagosId" asp-items="@ViewBag.selectListRol">
+                        <option value="">--Selecciona--</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Declracion Impuestos</label>
+                    <select class="form-control" asp-for="DeclaracionImpId" asp-items="@ViewBag.selectListDecla">
+                        <option value="">--Selecciona--</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Gastos</label>
+                    <select class="form-control" asp-for="GastosId" asp-items="@ViewBag.selectListGastos">
+                        <option value="">--Selecciona--</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input class="btn btn-success" type="submit" value="Editar" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

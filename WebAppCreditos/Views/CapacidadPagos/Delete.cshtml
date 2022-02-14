@@ -1,0 +1,62 @@
+﻿@using Modelo.Entidades
+
+@model CapacidadPago
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Borrar Capacidad Pago</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="">
+            <h3 class="text-center">Confirmacion borrar Capcidad Pago : @Model.RolPagos.Solicitante.Nombres @Model.RolPagos.Solicitante.Apellidos</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="">
+            <form method="post" asp-action="Delete">
+                <input type="hidden" asp-for="CapacidadPagoId" />
+                <div class="form-group">
+                    <label class="control-label">Rol de Pagos</label>
+                    <select class="form-control" asp-for="RolPagosId" asp-items="@ViewBag.selectListRol" disabled>
+                        <option value="">--Selecciona--</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="rolpagos">Ingrese el ingreso neto de rol de pagos</label>
+                    <input class="form-control" asp-for="RolPagosTotal" disabled>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Declracion Impuestos</label>
+                    <select class="form-control" asp-for="DeclaracionImpId" asp-items="@ViewBag.selectListDecla" disabled>
+                        <option value="">--Selecciona--</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="decImp">Ingrese el ingreso neto de declaracion de impuestos</label>
+                    <input class="form-control" asp-for="Declaracion" disabled>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Gastos</label>
+                    <select class="form-control" asp-for="GastosId" asp-items="@ViewBag.selectListGastos" disabled>
+                        <option value="">--Selecciona--</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="gastos">Ingrese el total de sus Gastos</label>
+                    <input class="form-control" asp-for="GastosTotal" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="rolpagos">Ingrese su ingreso neto general</label>
+                    <input class="form-control" asp-for="CapcidadPago" disabled>
+                </div>
+                <div class="form-group">
+                    <input class="btn btn-success" type="submit" value="Eliminar" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

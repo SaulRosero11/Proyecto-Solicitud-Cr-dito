@@ -1,0 +1,64 @@
+﻿@using Modelo.Entidades
+
+@model BienesSolicitante
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Actualizar Bien Solicitante</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="">
+            <h3 class="text-center">Editar del bien del solicitante : @Model.Solicitante.Nombres @Model.Solicitante.Apellidos</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="">
+            <form method="post" asp-action="Edit">
+                <input type="hidden" asp-for="BienesSolicitanteId" />
+                <div class="form-group">
+                    <label class="control-label">Solicitante</label>
+                    <select class="form-control" asp-for="SolicitanteId" asp-items="@ViewBag.selectListSolicitantes">
+                        <option value="">--Selecciona un Solicitante--</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="automovil">¿Cuenta con automóvil?</label>
+                    <select class="form-control" asp-for="Automovil" asp-items="Html.GetEnumSelectList<Automovil>()">
+                        <option value="">--Selecciona un Solicitante--</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="pagopendienteautomovil">¿Cuenta con algun pago pendiente del Automóvil?</label>
+                    <input class="form-control" asp-for="PagoPendienteAutomovil">
+                </div>
+                <div class="form-group">
+                    <label for="casa">¿Cuenta con una Casa?</label>
+                    <select class="form-control" asp-for="Casa" asp-items="Html.GetEnumSelectList<Casa>()">
+                        <option value="">--Selecciona un Solicitante--</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="pagopendientecasa">¿Cuenta con algun pago pendiente de la casa?</label>
+                    <input class="form-control" asp-for="PagoPendienteCasa">
+                </div>
+                <div class="form-group">
+                    <label for="Terreno">¿Cuenta con un Terreno?</label>
+                    <select class="form-control" asp-for="Terreno" asp-items="Html.GetEnumSelectList<Terreno>()">
+                        <option value="">--Selecciona un Solicitante--</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="pagopendienteterreno">¿Cuenta con algun pago pendiente de la Terreno?</label>
+                    <input class="form-control" asp-for="PagoPendienteTerreno">
+                </div>
+                <div class="form-group">
+                    <input class="btn btn-success" type="submit" value="Editar" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

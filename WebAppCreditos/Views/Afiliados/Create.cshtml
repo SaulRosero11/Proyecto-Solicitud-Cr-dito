@@ -1,0 +1,57 @@
+﻿@using Modelo.Entidades
+ 
+@model Afiliado 
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Creacion Afiliado</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="">
+            <h3 class="text-center">Ingrese los datos del Afiliado</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="">
+            <form method="post" asp-action="Create">
+                <div class="form-group">
+                    <label class="control-label">Solicitante</label>
+                    <select class="form-control" asp-for="SolicitanteId" asp-items="@ViewBag.selectListSolicitantes">
+                        <option value="">--Selecciona un Solicitante--</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="TipoAfiliado">Tipo Afiliado</label>
+                    <select class="form-control" asp-for="TipoAfiliado">
+                        <option>--SLECCIONE UNA OPCION--</option>
+                        <option value="Patronato">Patronato</option>
+                        <option value="Voluntario">Voluntario</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="RucEmpresa">Ruc Empresa</label>
+                    <input class="form-control" asp-for="RucEmpresa" placeholder="Ingresa el ruc de la empresa">
+                </div>
+                <div class="form-group">
+                    <label for="NombreEmpresa">Nombre Empresa</label>
+                    <input class="form-control" asp-for="NombreEmpresa" placeholder="Ingresa el nombre de la empresa">
+                </div>
+                <div class="form-group">
+                    <label for="FechaInicio"> Desde que fecha</label>
+                    <input class="form-control" asp-for="PeriodoDesde" />
+                </div>
+                <div class="form-group">
+                    <label for="FechHasta"> Hasta que fecha</label>
+                    <input class="form-control" asp-for="PeriodoHasta" />
+                </div>
+                <div class="form-group">
+                    <input class="btn btn-success" type="submit" value="Crear Afiliacion" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

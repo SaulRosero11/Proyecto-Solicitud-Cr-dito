@@ -1,0 +1,72 @@
+﻿@using Modelo.Entidades
+
+@model IEnumerable<Amortizacion>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Lista Amortización</h1>
+<p> A continución se presenta la lista de Amortización del Sistema de Aprovación de Créditos BIESS</p>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <h3>Amortización</h3>
+        </div>
+        <div class="col-sm-6">
+            <a class="btn btn-success d-block" asp-controller="Amortizacion" asp-action="Create">
+                Nuevo Amortización
+            </a>
+        </div>
+    </div>
+    @if (TempData["mensaje"] != null)
+    {
+        <div class="alert alert-warning alert-dismissible fade show " role="alert">
+            @TempData["mensaje"]
+            <button type="button" class="close" data-dismiss="alert" aria-label="close">
+                <span ariaaria-hidden="true">
+                    &times;
+                </span>
+            </button>
+        </div>
+    }
+    <div class="row">
+        @if (Model.Count() > 0)
+        {
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Pago Mensual</th>
+                        <th>Valor Crédito</th>
+                        <th>Estado Crédtio</th>
+                        <td>Acciones</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var amortizacion in Model)
+                    {
+                        <tr>
+                            <td>@amortizacion.AmortizacionId</td>
+                            <td>@amortizacion.PagoMensual</td>
+                            <td>@amortizacion.ValorCredito</td>
+                            <td>@amortizacion.Estado</td>
+
+
+                            <td>
+                                <a class="btn btn-warning"
+                                   asp-controller="Amortizacion" asp-action="Validar" asp-route-id="@amortizacion.AmortizacionId">
+                                    Ver
+                                </a>
+                                <a class="btn btn-danger" asp-controller="Amortizacion" asp-action="Delete" asp-route-id="@amortizacion.AmortizacionId"> Eliminar </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
+</div>
+

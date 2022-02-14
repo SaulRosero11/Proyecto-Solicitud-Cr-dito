@@ -1,0 +1,68 @@
+﻿@using Modelo.Entidades
+
+@model IEnumerable<CapacidadPago>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Lista Capcidad Pago</h1>
+<p> A continución se presenta la lista de la Capcidad Pago del Sistema de Aprovación de Créditos BIESS</p>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <h3>Capacidad Pago</h3>
+        </div>
+        <div class="col-sm-6">
+            <a class="btn btn-success d-block" asp-controller="CapacidadPagos" asp-action="Create">
+                Nueva Capacidad Pago
+            </a>
+        </div>
+    </div>
+    @if (TempData["mensaje"] != null)
+    {
+        <div class="alert alert-warning alert-dismissible fade show " role="alert">
+            @TempData["mensaje"]
+            <button type="button" class="close" data-dismiss="alert" aria-label="close">
+                <span ariaaria-hidden="true">
+                    &times;
+                </span>
+            </button>
+        </div>
+    }
+    <div class="row">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Solicitante</th>
+                    <th>Total Declaracion</th>
+                    <th>Rol Pagos Total</th>
+                    <th>Gastos Total</th>
+                    <th>Capacidad Pago</th>
+                    <th>Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (CapacidadPago capacidad in Model)
+                {
+                <tr>
+                    <td>@capacidad.CapacidadPagoId</td>
+                    <td>@capacidad.RolPagos.Solicitante.Nombres @capacidad.RolPagos.Solicitante.Apellidos</td>
+                    <td>@capacidad.Declaracion</td>
+                    <td>@capacidad.RolPagosTotal</td>
+                    <td>@capacidad.GastosTotal</td>
+                    <td>@capacidad.CapcidadPago</td>
+                    <td>
+                        <a class="btn btn-warning" asp-controller="CapacidadPagos" asp-action="Edit" asp-route-id="@capacidad.CapacidadPagoId"> Editar </a>
+                        <a class="btn btn-danger" asp-controller="CapacidadPagos" asp-action="Delete" asp-route-id="@capacidad.CapacidadPagoId"> Eliminar </a>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

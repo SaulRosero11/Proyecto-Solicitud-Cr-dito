@@ -1,0 +1,60 @@
+﻿@using Modelo.Entidades
+ 
+@model Solicitante 
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Actualizar Solicitante</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="">
+            <h3 class="text-center">Editar los datos del solicitante : @Model.Nombres  @Model.Apellidos</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="">
+            <form method="post" asp-action="Edit">
+
+                <input type="hidden" asp-for="SolicitanteId"/>
+                <div class="form-group">
+                    <label for="Nombres">Nombres</label>
+                    <input type="text" class="form-control" asp-for="Nombres">
+                </div>
+                <div class="form-group">
+                    <label for="Apellidos">Apellidos</label>
+                    <input type="text" class="form-control" asp-for="Apellidos" >
+                </div>
+                <div class="form-group">
+                    <label for="Cedula">Cédula</label>
+                    <input type="text" class="form-control" asp-for="Cedula" />
+                </div>
+                <div class="form-group">
+                    <label for="EstadoCivil">Estado Civil</label>
+                    <select class="form-control"
+                            asp-for="EstadoCivil" asp-items="Html.GetEnumSelectList<EstadoCivil>()">
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="FechaNac"> Fecha de Nacimiento</label>
+                    <input class="form-control" asp-for="FechaNac">
+                </div>
+                <div class="form-group">
+                    <label for="Discapacidad">Discapcidad</label>
+                    <label>
+                        <input type="radio" asp-for="Discapacidad" value="true"> SI
+                    </label>
+                    <label>
+                        <input type="radio" asp-for="Discapacidad" value="false"> NO
+                    </label>
+                </div>
+                <div class="form-group">
+                    <input class="btn btn-success" type="submit" value="Actualizar Solicitante" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

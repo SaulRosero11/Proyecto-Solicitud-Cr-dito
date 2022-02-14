@@ -1,0 +1,49 @@
+﻿@using Modelo.Entidades
+ 
+@model DeclaracionImp
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Creacion de la declaracion de impuestos</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="">
+            <h3 class="text-center">Ingrese los datos de declaracion impuestos</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="">
+            <form method="post" asp-action="Create">
+                <div class="form-group">
+                    <label class="control-label">Solicitante</label>
+                    <select class="form-control" asp-for="SolicitanteId" asp-items="@ViewBag.selectListSolicitantes">
+                        <option value="">--Selecciona un Solicitante--</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="ventasanuales">Ingrese las ventas mensuales</label>
+                    <input class="form-control" asp-for="VentasAnuales">
+                </div>
+                <div class="form-group">
+                    <label for="aporteIess">Ingrese cuanto aporta al IESS por mes</label>
+                    <input class="form-control" asp-for="AporteIESS">
+                </div>
+                <div class="form-group">
+                    <label for="prestamoIess">Ingrese si paga algun prestamo al IESS</label>
+                    <input class="form-control" asp-for="PrestamosIESS">
+                </div>
+                <div class="form-group">
+                    <label for="Gastosvarios">Ingrese sus Gastos Varios</label>
+                    <input class="form-control" asp-for="GastosVarios">
+                </div>
+                <div class="form-group">
+                    <input class="btn btn-success" type="submit" value="Crear Declaracion" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

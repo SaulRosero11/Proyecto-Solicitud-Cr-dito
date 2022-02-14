@@ -1,0 +1,47 @@
+﻿@using Modelo.Entidades
+ 
+@model RolPagos
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Creacion Rol de Pagos</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="">
+            <h3 class="text-center">Ingrese los datos del Rol de Pagos</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="">
+            <form method="post" asp-action="Create">
+                <div class="form-group">
+                    <label class="control-label">Solicitante</label>
+                    <select class="form-control" asp-for="SolicitanteId" asp-items="@ViewBag.selectListSolicitantes">
+                        <option value="">--Selecciona un Solicitante--</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="Sueldo">Ingresa tu sueldo Mensual</label>
+                    <input class="form-control" asp-for="Sueldo">
+                </div>
+                <div class="form-group">
+                    <label for="aporteIess">**El aporte al IESS se calcula automaticamente con el sueldo**</label>
+                </div>
+                <div class="form-group">
+                    <label for="prestamo">Ingresa si tienes algun prestamo en el IESS</label>
+                    <input class="form-control" asp-for="PrestamosIESS">
+                </div>
+                <div class="form-group">
+                    <label for="anticipo">Ingresa cuanto pediste de anticipo</label>
+                    <input class="form-control" asp-for="Anticipo">
+                </div>
+                <div class="form-group">
+                    <input class="btn btn-success" type="submit" value="Crear Rol de Pagos" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

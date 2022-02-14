@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - WebAppCreditos</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light  bg-primary">
+            <div class="container-fluid">
+                <h1 class="navbar-brand text-light" href="#" >BIESS</h1>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active text-light" aria-current="page" asp-area="" asp-controller="Home" asp-action="Index">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" aria-current="page" href="#">Información</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Tipo de Créditos
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#">Vivienda Terminada</a></li>
+                                <li><a class="dropdown-item" href="#">Vivienda de Intéres Público</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#">Otros Bienes Inmuebles</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <button class="btn btn-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Clases</button>
+
+                </div>
+            </div>
+        </nav>
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+            <div class="offcanvas-header">
+                <h5 id="offcanvasRightLabel">Clases Crédito</h5>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <a class="dropdown-item" asp-area="" asp-controller="Solicitante" asp-action="Index">Solicitante</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a class="dropdown-item" asp-area="" asp-controller="Afiliados" asp-action="Index">Afiliados</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a class="dropdown-item" asp-area="" asp-controller="BienAdquirir" asp-action="Index">Bien Adquirir</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a class="dropdown-item" asp-area="" asp-controller="RolPagos" asp-action="Index">Rol de Pagos</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a class="dropdown-item" asp-area="" asp-controller="DeclaracionImp" asp-action="Index">Declaracion Impuestos</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a class="dropdown-item" asp-area="" asp-controller="Gastos" asp-action="Index"> Gastos </a>
+                    </li>
+                    <li class="list-group-item">
+                        <a class="dropdown-item" asp-area="" asp-controller="CapacidadPagos" asp-action="Index"> Capacidad Pagos</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a class="dropdown-item" asp-area="" asp-controller="BienesSolicitante" asp-action="Index"> Bienes Solicitante</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a class="dropdown-item" asp-area="" asp-controller="DetalleDeudas" asp-action="Index">Detalle Deudas</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a class="dropdown-item" asp-area="" asp-controller="HistorialCrediticio" asp-action="Index">Historial Crediticio</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a class="dropdown-item" asp-area="" asp-controller="Solicitud" asp-action="Index"> Solicitud</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a class="dropdown-item" asp-area="" asp-controller="Solicitud_Det" asp-action="Index">Solicitud Detalle</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a class="dropdown-item" asp-area="" asp-controller="Amortizacion" asp-action="Index">Amortizacion</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container text-center">
+            &copy; 2022 - Anthony Rosero & Elkin Romero - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

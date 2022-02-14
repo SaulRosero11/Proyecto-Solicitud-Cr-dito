@@ -1,0 +1,64 @@
+﻿@using Modelo.Entidades
+
+@model IEnumerable<Solicitud_Det>
+ 
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Lista Detalle Solicitud</h1>
+<p> A continución se presenta la lista del detalle de la solicitud del Sistema de Aprovación de Créditos BIESS</p>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <h3>Capacidad Pago</h3>
+        </div>
+        <div class="col-sm-6">
+            <a class="btn btn-success d-block" asp-controller="Solicitud_Det" asp-action="Create">
+                Nuevo Detalle Solicitud
+            </a>
+        </div>
+    </div>
+    @if (TempData["mensaje"] != null)
+    {
+        <div class="alert alert-warning alert-dismissible fade show " role="alert">
+            @TempData["mensaje"]
+            <button type="button" class="close" data-dismiss="alert" aria-label="close">
+                <span ariaaria-hidden="true">
+                    &times;
+                </span>
+            </button>
+        </div>
+    }
+    <div class="row">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Solicitante</th>
+                    <th>Solicitud Id</th>
+                    <th>Amortizacion Id</th>                    
+                    <th>Opciones</th>                    
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Solicitud_Det soli in Model)
+                {
+                    <tr>
+                        <td>@soli.Solicitud_DetId</td>
+                        <td>@soli.Solicitud.Afiliado.Solicitante.Nombres @soli.Solicitud.Afiliado.Solicitante.Apellidos</td>
+                        <td>@soli.solicitudId</td>
+                        <td>@soli.amortizacionId</td>
+                        <td>
+                            <a class="btn btn-warning" asp-controller="Solicitud_Det" asp-action="Edit" asp-route-id="@soli.Solicitud_DetId"> Editar </a>
+                            <a class="btn btn-danger" asp-controller="Solicitud_Det" asp-action="Delete" asp-route-id="@soli.Solicitud_DetId"> Eliminar </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

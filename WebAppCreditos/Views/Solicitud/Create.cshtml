@@ -1,0 +1,67 @@
+﻿@using Modelo.Entidades
+ 
+@model Solicitud
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Creacion de la Solicitud</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="">
+            <h3 class="text-center">Ingrese los datos de la Solicitud</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="">
+            <form method="post" asp-action="Create">
+                <div class="form-group">
+                    <label class="control-label">Tiempo de pago en años</label>
+                    <input class="form-group" asp-for="TiempoCredito" />
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Tasa Nominal Anual</label>
+                    <input class="form-group" asp-for="TNA" value="6,70" />
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Cuota Desgravamen</label>
+                    <input class="form-group" asp-for="CuotaDesgrav" value="21,13"  />
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Cuota del Seguro</label>
+                    <input class="form-group" asp-for="CuatoSeguro" value="6,93" />
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Bienes Solicitante</label>
+                    <select class="form-control" asp-for="BienAdquirirId" asp-items="@ViewBag.selectListBien">
+                        <option value="">--Selecciona--</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Afiliado</label>
+                    <select class="form-control" asp-for="AfiliadoId" asp-items="@ViewBag.selectListAfiliado">
+                        <option value="">--Selecciona--</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Historial Crediticio</label>
+                    <select class="form-control" asp-for="HistorialCrediticioId" asp-items="@ViewBag.selectListHistorial">
+                        <option value="">--Selecciona--</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Capcidad Pago</label>
+                    <select class="form-control" asp-for="CapacidadPagoId" asp-items="@ViewBag.selectListCap">
+                        <option value="">--Selecciona--</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input class="btn btn-success" type="submit" value="Crear Bien" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

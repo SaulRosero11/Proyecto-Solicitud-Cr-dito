@@ -1,0 +1,63 @@
+﻿@using Modelo.Entidades
+ 
+@model Solicitante 
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Borrar Solicitante</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="">
+            <h3 class="text-center">Confirmacion borrar solicitante : @Model.Nombres  @Model.Apellidos</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="">
+            <form method="post" asp-action="Delete">
+
+                <input type="hidden" asp-for="SolicitanteId"/>
+                <div class="form-group">
+                    <label for="Nombres">Nombres</label>
+                    <input type="text" class="form-control" asp-for="Nombres" disabled/>
+                </div>
+                <div class="form-group">
+                    <label for="Apellidos">Apellidos</label>
+                    <input type="text" class="form-control" asp-for="Apellidos" disabled/>
+                </div>
+                <div class="form-group">
+                    <label for="Cedula">Cédula</label>
+                    <input type="text" class="form-control" asp-for="Cedula" disabled/>
+                </div>
+                <div class="form-group">
+                    <label for="EstadoCivil">Estado Civil</label>
+                    <select class="custom-select mr-sm-2" asp-for="EstadoCivil" disabled>
+                        <option selected> --Selecione una opción--</option>
+                        <option value="Soltero"> Soltero </option>
+                        <option value="Casado"> Casado </option>
+                        <option value="3">Three</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="FechaNac"> Fecha de Nacimiento</label>
+                    <input type="date" class="form-control" asp-for="FechaNac" disabled/>
+                </div>
+                <div class="form-group">
+                    <label for="Discapacidad">Discapcidad</label>
+                    <label>
+                        <input type="radio" asp-for="Discapacidad" value="true" disabled/> SI
+                    </label>
+                    <label>
+                        <input type="radio" asp-for="Discapacidad" value="false" disabled/> NO
+                    </label>
+                </div>
+                <div class="form-group">
+                    <input class="btn btn-danger" type="submit" value="Eliminar Solicitante" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

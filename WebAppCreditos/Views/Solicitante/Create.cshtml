@@ -1,0 +1,59 @@
+﻿@using Modelo.Entidades
+ 
+@model Solicitante 
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Creacion de Solicitante</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="">
+            <h3 class="text-center">Ingrese los datos del solicitante</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="">
+            <form method="post" asp-action="Create">
+                <div class="form-group">
+                    <label for="Nombres">Nombres</label>
+                    <input type="text" class="form-control" asp-for="Nombres" placeholder="Ingresa tus dos nombres">
+                </div>
+                <div class="form-group">
+                    <label for="Apellidos">Apellidos</label>
+                    <input type="text" class="form-control" asp-for="Apellidos" placeholder="Ingresa tus dos apellidos">
+                </div>
+                <div class="form-group">
+                    <label for="Cedula">Cédula</label>
+                    <input type="text" class="form-control" asp-for="Cedula" placeholder="Ingresa tu número de cédula">
+                </div>
+                <div class="form-group">
+                    <label for="EstadoCivil">Estado Civil</label>
+                    <select class="form-control"
+                            asp-for="EstadoCivil" asp-items="Html.GetEnumSelectList<EstadoCivil>()">
+                        <option value="">--Selecciona un Estado Civil--</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="FechaNac"> Fecha de Nacimiento</label>
+                    <input class="form-control" asp-for="FechaNac" />
+                </div>
+                <div class="form-group">
+                    <label for="Discapacidad">Discapcidad</label>
+                    <label>
+                        <input type="radio" asp-for="Discapacidad" value="true"> SI
+                    </label>
+                    <label>
+                        <input type="radio" asp-for="Discapacidad" value="false"> NO
+                    </label>
+                </div>
+                <div class="form-group">
+                    <input class="btn btn-success" type="submit" value="Crear Solicitante" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,66 @@
+﻿@using Modelo.Entidades
+
+@model HistorialCrediticio
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Borrar Historial Crediticio</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="">
+            <h3 class="text-center">Confirmacion borrar Historial Crediticio : @Model.BienesSolicitante.Solicitante.Nombres @Model.BienesSolicitante.Solicitante.Apellidos</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="">
+            <form method="post" asp-action="Delete">
+                <input type="hidden" asp-for="HistorialCrediticioId" />
+                <div class="form-group">
+                    <label class="control-label">Bienes Solicitante</label>
+                    <select class="form-control" asp-for="BienesSolicitanteId" asp-items="@ViewBag.selectListBien" disabled>
+                        <option value="">--Selecciona--</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="bienes">Ingrese las deudas pendientes de los bienes</label>
+                    <input class="form-control" asp-for="DeudasBienes" disabled>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Detalles Deuda</label>
+                    <select class="form-control" asp-for="DetalleDeudasId" asp-items="@ViewBag.selectListDet" disabled>
+                        <option value="">--Selecciona--</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="decImp">Ingrese las deudas pendientes</label>
+                    <input class="form-control" asp-for="DeudasDet" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="central">¿Esta en la central de riesgos?</label>
+                    <select class="form-control" asp-for="CentralRiesgos" asp-items="Html.GetEnumSelectList<CentralRiesgos>()" disabled>
+                        <option value="">--Seleccionae--</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="pendientes">¿Se encuentra con pagos pendientes?</label>
+                    <select class="form-control" asp-for="PagosPendientes" asp-items="Html.GetEnumSelectList<PagosPendientes>()" disabled>
+                        <option value="">--Selecciona un Solicitante--</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="estado">Estado historial crediticio</label>
+                    <select class="form-control" asp-for="EstadoHistorial" asp-items="Html.GetEnumSelectList<EstadoHistorial>()" disabled>
+                        <option value="">--Selecciona un Solicitante--</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input class="btn btn-success" type="submit" value="Eliminar" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
